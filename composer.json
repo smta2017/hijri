@@ -11,7 +11,7 @@
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
-        "laravel/framework": "^6.18.35",
+        "laravel/framework": "^6.18.37",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
         "simplesoftwareio/simple-qrcode": "^3.0",
