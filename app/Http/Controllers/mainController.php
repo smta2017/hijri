@@ -48,7 +48,7 @@ class mainController extends Controller
 
         $full_date =  $date->getCurrentDate('hijri', 'day') . ' ' . $the_date;
 
-        $title = $full_date . '  -  '  . __('main.hijri_page_title');
+        $title =  __('main.hijri_page_title');
         $page_title = __('main.day') . $full_date;
 
         $keywords = "hijri, هجري, georgian, convert, تحويل التاريخ, months, ramadan, umm alqura, أم القرى,تقويم," . $tyear;
