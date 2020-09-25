@@ -149,6 +149,8 @@ class  Core
             return 'ar';
         } elseif ($current_lang == 'en') {
             return 'en';
+        }else{
+            return 'en';
         }
     }
 
