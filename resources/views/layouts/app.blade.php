@@ -1,25 +1,27 @@
 <!doctype html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{{$title}}</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{$title}}</title>
 
-<meta name="description" content="{{$desk}}">
-<meta name="keywords" content="{{$keywords}}">
-<meta name="author" content="CHEIKH EL MOCTAR Mohamed Yehdhih">
-
-<meta property="og:title" content="{{$page_title}}">
-<meta property="og:site_name" content="@lang('main.hijri_calendar')">
-<meta property="og:description" content="{{$desk}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-<meta name="twitter:card" content="{{$title}}">
-<meta name="twitter:site" content="@ @lang('main.hijri_calendar')">
-<meta name="twitter:title" content="{{$page_title}}">
-<meta name="twitter:description" content="{{$desk}}">
+    <meta name="description" content="{{$desk}}">
+    <meta name="keywords" content="{{$keywords}}">
+    <meta name="author" content="CHEIKH EL MOCTAR Mohamed Yehdhih">
+
+    <meta property="og:title" content="{{$page_title}}">
+    <meta property="og:site_name" content="@lang('main.hijri_calendar')">
+    <meta property="og:description" content="{{$desk}}">
+
+
+    <meta name="twitter:card" content="{{$title}}">
+    <meta name="twitter:site" content="@ @lang('main.hijri_calendar')">
+    <meta name="twitter:title" content="{{$page_title}}">
+    <meta name="twitter:description" content="{{$desk}}">
 
 
     <!-- CSRF Token -->
@@ -78,9 +80,31 @@
                         <a class="nav-link" href="page6.html">@lang('navbar.chance')</a>
                     </li>
                 </ul>
+
+
+
+                @if(\App::isLocale('ar'))
+                <div style="margin:  0 0 0 50px;">
+                    <a href="/changelocale?locale=en"><img src="./en.png" alt="" width="30px"></a>
+                </div>
+                @elseif(\App::isLocale('en'))
+                <div style="margin:  0 50px 0 0;">
+                    <a href="/changelocale?locale=ar"><img src="./ar.png" alt="" width="30px"></a>
+                </div>
+
+                @else
+                <div style="margin:  0 50px 0 0;">
+                    <a href="/changelocale?locale=ar"><img src="./ar.png" alt="" width="30px"></a>
+                </div>
+                @endif
+
+
+
                 <form class="form-inline my-2 my-lg-0 lastpart5841">
-                    <select name="" id="">
-                        <option value="">Select Year</option>
+                    <select name="selectyear" id="selectyear">
+                        <option value="">@lang('main.select_year')</option>
+                        <option value="2020">2022</option>
+                        <option value="2020">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -90,9 +114,7 @@
                         <i class="fas fa-cog"></i>
                     </a>
                 </form>
-                <br>
-                <a href="/changelocale?locale=en">en</a> 
-                <a href="/changelocale?locale=ar">ar</a>
+
             </div>
         </nav>
 
@@ -164,6 +186,23 @@
         <!--  myjs -->
         <script src="./assets/js/myjs.js"></script>
 
+        <script>
+            $("#selectyear").on("change", function() {
+                $.ajax({
+                    url: '/changeyear',
+                    type: "get",
+                    data: {
+                        year: $(this).val(),
+                    },
+                    success: function(res) {
+
+                    },
+                    error: function(msg) {
+                        console.error(msg);
+                    }
+                });
+            })
+        </script>
         @yield('scripts')
     </div>
 </body>

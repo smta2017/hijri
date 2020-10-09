@@ -82,6 +82,7 @@ return [
     'today' => 'Today',
     'year_type' => 'Year Type',
     'julian_type' => 'Julian Calendar',
+    "select_year" => "Select Year",
     
     'youm' => 'Day',
     'saaa' => 'Hour',

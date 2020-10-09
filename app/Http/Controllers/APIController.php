@@ -154,7 +154,7 @@ class APIController extends Controller
     {
         $years = [];
         $days =  __('main.days'); // parent::getLanguageDays();
-        $year = 2020; // (int) $request->data['year'];
+        $year = $request["year"]; // (int) $request->data['year'];
         $month_inc = 1;
         $eccsc = "";
         for ($j = 0; $j <= 3; $j++) {

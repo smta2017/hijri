@@ -8,10 +8,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <img src="./assets/images/calendar.png" alt="">
-                    <span>Today's Date</span>
+                    <span>@lang('main.today_date')</span>
                 </div>
                 <div class="col-md-6 thisalignright">
-                    <span>Friday 9 Muharram 1442 Correspond to 28 August 2020</span>
+                    <span>{{$full_date}} @lang('main.correspond_to') {{$full_date_go}}</span>
                 </div>
             </div>
         </div>

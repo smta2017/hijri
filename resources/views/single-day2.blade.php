@@ -23,7 +23,7 @@
             <img class="img2" src="./assets/images/GrilleCalendare.png" alt="">
           </div>
           <div>
-            <h5>@lang('main.today')</h5>
+            <h5>@lang('main.hijri_calendar')</h5>
             <h3>{{$full_date}}</h3>
           </div>
         </div><!-- end header -->
@@ -31,11 +31,11 @@
           <h3>@lang('main.today') | @lang('main.hijri_calendar') </h3>
           <table>
             <tr>
-              <td>@lang('main.complete_format') </td>
+              <td>@lang('main.complete_format')  </td>
               <td>{{$full_date}}</td>
             </tr>
             <tr>
-              <td>@lang('main.numeric_format') </td>
+              <td>@lang('main.numeric_format')</td>
               <td>{{$numeric_date}}</td>
             </tr>
             <tr>
@@ -45,10 +45,10 @@
           </table>
         </div><!-- end content1 -->
         <div class="content1">
-          <h3>@lang('main.today') | @lang('main.georgian_calendar') </h3>
+          <h3>@lang('main.today') | @lang('main.georgian_calendar')</h3>
           <table>
             <tr>
-              <td>@lang('main.complete_format') </td>
+            <td>@lang('main.complete_format') </td>
               <td>{{$full_date_go}}</td>
             </tr>
             <tr>

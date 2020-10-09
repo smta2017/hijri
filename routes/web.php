@@ -27,11 +27,13 @@ Route::get('/testhijri2', 'testController@index2');
 Route::get('/{calender?}/date/{day?}/{mon?}/{year?}', 'mainController@single');
 
 // date/2/jan/1443
-Route::get('/date/{day?}/{mon?}/{year?}', 'testController@index4');
+Route::get('/date/{day?}/{mon?}/{year?}', 'mainController@single2');
 Auth::routes();
 
 
 Route::get('changelocale',  'mainController@changeLocale');
+
+Route::get('changeyear',  'mainController@changeyear');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
