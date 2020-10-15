@@ -28,8 +28,13 @@ class mainController extends Controller
         session(['year' => $request->year]);
         $value = session('year');
 
-        // return redirect()->back();
-        return redirect('/');
+        // return $value;
+        return 'done';
+    }
+
+    public function getcurretyear()
+    {
+        return session('year');
     }
 
     public function index()
@@ -40,9 +45,9 @@ class mainController extends Controller
         $date = new  Today();
 
         $api = new  APIController();
-        $request = ["year" => "1442"];
-        if (session('year') != '') {
-            $request = ["year" => "2020"];
+        $request = ["year" => session('year')];
+        if (session('year') == '') {
+            $request = ["year" => "1442"];
         }
         $tyear = $request['year'];
         $calender  = $api->hijriCalendar($request);
@@ -71,7 +76,16 @@ class mainController extends Controller
         $numeric_date_go = $date->getCurrentDate('georgian', 'numeric'); //$date->setSpecificDay($day, $mon, $year, "hijri");
         $full_date_go =   $the_date_go;
 
-        return view("welcome", compact('calender', 'keywords', 'tyear', 'title', 'page_title', 'desk',   'numeric_date_go', 'full_date_go', 'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
+        $droplists = [
+            1444,
+            1443,
+            1442,
+            1441,
+            1440,
+            1439,
+        ];
+
+        return view("welcome", compact('droplists', 'calender', 'keywords', 'tyear', 'title', 'page_title', 'desk',   'numeric_date_go', 'full_date_go', 'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
     }
 
     public function gorgianCalender()
@@ -82,7 +96,10 @@ class mainController extends Controller
         $date = new  Today();
 
         $api = new  APIController();
-        $request = ["year" => "2020"];
+        $request = ["year" => session('year')];
+        if (session('year') == '') {
+            $request = ["year" => "2020"];
+        }
         $tyear = $request['year'];
         $calender  = $api->georgianCalendar($request);
 
@@ -110,9 +127,16 @@ class mainController extends Controller
         $full_date_go =   $the_date_go;
 
         $keywords = "hijri, هجري, georgian, convert, تحويل التاريخ, months, ramadan, umm alqura, أم القرى,تقويم," . $tyear;
+        $droplists = [
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+        ];
 
-
-        return view("welcome-g", compact('calender', 'keywords', 'tyear', 'title', 'page_title', 'desk',   'numeric_date_go', 'full_date_go',    'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
+        return view("welcome-g", compact('droplists','calender', 'keywords', 'tyear', 'title', 'page_title', 'desk',   'numeric_date_go', 'full_date_go',    'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
     }
 
     public function index2(Request $request)
@@ -164,8 +188,15 @@ class mainController extends Controller
         $title = $full_date . '  -  '  . __('main.hijri_page_title');
         $page_title = __('main.day') . $full_date;
 
-
-        return view('single-day', compact('keywords', 'tyear', 'title', 'page_title', 'desk',    'full_date', 'numeric_date', 'numeric_date_go', 'full_date_go', 'the_date', 'the_day', 'surfix'));
+        $droplists = [
+            1444,
+            1443,
+            1442,
+            1441,
+            1440,
+            1439,
+        ];
+        return view('single-day', compact('droplists','keywords', 'tyear', 'title', 'page_title', 'desk',    'full_date', 'numeric_date', 'numeric_date_go', 'full_date_go', 'the_date', 'the_day', 'surfix'));
     }
 
     public function single2($day = 0, $mon = 0, $year = 0)
@@ -207,7 +238,14 @@ class mainController extends Controller
         $title = $full_date . '  -  '  . __('main.georgian_page_title');
         $page_title = __('main.day') . $full_date;
 
-
-        return view('single-day2', compact('keywords', 'tyear', 'title', 'page_title', 'desk',  'numeric_date_go', 'full_date_go',   'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
+        $droplists = [
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+        ];
+        return view('single-day2', compact('droplists', 'keywords', 'tyear', 'title', 'page_title', 'desk',  'numeric_date_go', 'full_date_go',   'full_date', 'numeric_date', 'the_date', 'the_day', 'surfix'));
     }
 }

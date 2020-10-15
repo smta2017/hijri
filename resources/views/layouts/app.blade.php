@@ -103,12 +103,10 @@
                 <form class="form-inline my-2 my-lg-0 lastpart5841">
                     <select name="selectyear" id="selectyear">
                         <option value="">@lang('main.select_year')</option>
-                        <option value="2020">2022</option>
-                        <option value="2020">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
+                        @foreach($droplists as $droplist)
+                        <option value="{{$droplist}}">{{$droplist}}</option>
+                        @endforeach
+
                     </select>
                     <a href="#" class="link_settings">
                         <i class="fas fa-cog"></i>
@@ -187,6 +185,20 @@
         <script src="./assets/js/myjs.js"></script>
 
         <script>
+            $(document).ready(function() {
+                $.ajax({
+                    url: '/getcurretyear',
+                    type: "get",
+                    success: function(res) {
+                        if (res) {
+                            $("#selectyear").val(res);
+                        }
+                    },
+                    error: function(msg) {
+                        console.error(msg);
+                    }
+                });
+            });
             $("#selectyear").on("change", function() {
                 $.ajax({
                     url: '/changeyear',
@@ -195,7 +207,9 @@
                         year: $(this).val(),
                     },
                     success: function(res) {
-
+                        if (res == 'done') {
+                            location.reload();
+                        }
                     },
                     error: function(msg) {
                         console.error(msg);

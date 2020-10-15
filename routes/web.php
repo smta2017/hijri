@@ -34,6 +34,7 @@ Auth::routes();
 Route::get('changelocale',  'mainController@changeLocale');
 
 Route::get('changeyear',  'mainController@changeyear');
+Route::get('getcurretyear',  'mainController@getcurretyear');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
