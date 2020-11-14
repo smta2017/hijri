@@ -80,7 +80,7 @@
                         <a class="nav-link" href="page6.html">@lang('navbar.chance')</a>
                     </li>
                 </ul>
-
+<span>sameh1</span>
 
 
                 @if(\App::isLocale('ar'))
